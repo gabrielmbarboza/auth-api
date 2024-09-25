@@ -1,0 +1,5 @@
+# Default platform for commands that take the --platform flag.
+# Replace with "linux/amd64" only in the arm64 platform.
+# DOCKER_DEFAULT_PLATFORM=sample/platform
+
+JWT_SECRET=jwt_secret
