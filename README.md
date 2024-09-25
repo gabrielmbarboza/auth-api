@@ -1,8 +1,8 @@
-# 🌎 Auth-API
+# 👮 Auth-API
 
 ## Table of Contents
 
-- [🌎 Auth-API](#-auth-api)
+- [👮 Auth-API](#-auth-api)
   - [Table of Contents](#table-of-contents)
   - [About ](#about-)
   - [Getting Started ](#getting-started-)
@@ -10,7 +10,6 @@
     - [Installing](#installing)
   - [Usage ](#usage-)
   - [Testing ](#testing-)
-  - [Todo ](#todo-)
 
 ## About <a name = "about"></a>
 
@@ -70,12 +69,6 @@ or use only the task `db:setup`.
 docker compose run --rm auth_api bin/rails db:setup
 ```
 
-Use the `auth:dev` task to populate the development database with valid user.
-
-```bash
-docker compose run --rm auth_api bin/rails auth:dev
-```
-
 ## Usage <a name = "usage"></a>
 
 Using Docker and docker-compose, just run the following command.
@@ -91,7 +84,7 @@ POST http://0.0.0.0:3000/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "user@example.com",
+    "email": "user@email.com",
     "password": "123"
 }
 ```
@@ -111,10 +104,3 @@ Use the following command to run all the tests.
 ```bash
 docker compose run --rm auth_api bin/rails test ./test
 ```
-
-## Todo <a name = "todo"></a>
-
-- [ ] Create user tests.
-- [ ] Create session tests.
-- [ ] AuthenticationService tests.
-
