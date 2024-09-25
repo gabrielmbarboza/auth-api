@@ -1,0 +1,28 @@
+FROM ruby:3.3.5-slim
+
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
+
+WORKDIR /usr/src/app
+
+COPY Gemfile Gemfile.lock ./
+
+COPY entrypoint.sh /usr/bin/
+
+RUN chmod +x /usr/bin/entrypoint.sh
+
+ENV BUNDLE_PATH /gems
+
+RUN bundle install --jobs 3
+
+COPY . ./
+
+RUN groupadd --system --gid 1000 rails && \
+    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
+    chown -R rails:rails db log storage tmp
+
+USER 1000:1000
+
+ENTRYPOINT ["entrypoint.sh"]
+
+EXPOSE 3000
