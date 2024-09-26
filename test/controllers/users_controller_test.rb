@@ -11,7 +11,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get api_v1_users_index_url, headers: { 'Authorization' => @auth_token }
+    get api_v1_users_url, headers: { 'Authorization' => @auth_token }
     assert_response :success
 
     users = JSON.parse(@response.body)
@@ -19,7 +19,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not get index, the token is invalid" do
-    get api_v1_users_index_url, headers: { 'Authorization' => 'invalid_token' }
+    get api_v1_users_url, headers: { 'Authorization' => 'invalid_token' }
     assert_response 401
 
     error = JSON.parse(@response.body)
@@ -29,7 +29,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not get index, the header is nil" do
-    get api_v1_users_index_url, headers: { 'Authorization' => nil }
+    get api_v1_users_url, headers: { 'Authorization' => nil }
     assert_response 401
 
     error = JSON.parse(@response.body)
@@ -39,7 +39,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not get index, the header doesn't exist" do
-    get api_v1_users_index_url
+    get api_v1_users_url
     assert_response 401
 
     error = JSON.parse(@response.body)
@@ -52,7 +52,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     payload = { user_id: @user.id }
     token = JsonWebToken.encode(payload, exp: Time.now.to_i - 60)
 
-    get api_v1_users_index_url, headers: { 'Authorization' => "Baerer #{token}" }
+    get api_v1_users_url, headers: { 'Authorization' => "Baerer #{token}" }
     assert_response 401
 
     error = JSON.parse(@response.body)

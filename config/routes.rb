@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     concern :base do
-      get "users/index"
+      resources :users, only: [:index]
     end
 
     namespace :v1 do
