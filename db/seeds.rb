@@ -8,4 +8,33 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.create(username: 'user', 'user@email.com', password: '123', password_confirmation: '123')
+users = [
+  { 
+    username: "john_doe", 
+    email: "john@example.com", 
+    password: '123', 
+    password_confirmation: 
+    '123', 
+    avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+  },
+  { username: "jane_smith", 
+    email: "jane@example.com", 
+    password: '123', 
+    password_confirmation: '123', 
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+  },
+  { username: "mike_johnson", 
+    email: "mike@example.com", 
+    password: '123', 
+    password_confirmation: '123', 
+    avatar: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+  },
+  { username: "sarah_williams", 
+    email: "sarah@example.com", 
+    password: '123', 
+    password_confirmation: '123', 
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+  }
+]
+
+users.each { |user| User.create!(user) }
