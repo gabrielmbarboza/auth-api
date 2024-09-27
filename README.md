@@ -53,12 +53,6 @@ cp app.sample app
 cp database.sample database
 ```
 
-Create and migrate the database.
-
-```bash
-docker compose run --rm auth_api bin/rails db:create
-```
-
 ```dbash
 docker compose run --rm auth_api bin/rails db:migrate
 ```
@@ -84,7 +78,7 @@ POST http://0.0.0.0:3000/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "user@email.com",
+    "email": "jane@example.com",
     "password": "123"
 }
 ```
